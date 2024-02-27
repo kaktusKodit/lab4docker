@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuzeg4
+spec:
+  selector:
+    matchLabels:
+      app: kuzeg4
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: kuzeg4
+    spec:
+      containers:
+        - name: lb4
+          image: yakaktus/lb4
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "1000Mi"
+            limits:
+              cpu: "100m"
+              memory: "2000Mi"
